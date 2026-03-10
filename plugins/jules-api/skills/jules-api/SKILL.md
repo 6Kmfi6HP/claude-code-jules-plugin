@@ -27,8 +27,12 @@ Jules runs async coding sessions in the cloud, clones your GitHub repo, writes c
 
 The plugin includes `jules_cli.py` — a deterministic Python CLI for the Jules REST API.
 
+The CLI script is located at `scripts/jules_cli.py` relative to the plugin root directory.
+Find the plugin root by locating the `.claude-plugin/plugin.json` file in the installed plugin path.
+
 ```bash
-JULES_CLI="python3 $(dirname "$0")/../scripts/jules_cli.py"
+# Resolve the plugin root, then:
+JULES_CLI="python3 <plugin-root>/scripts/jules_cli.py"
 
 # List sessions
 $JULES_CLI sessions list --page-size 10

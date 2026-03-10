@@ -11,13 +11,14 @@ Get a compact summary of a Jules coding session including state, progress, chang
 
 1. Extract the session ID from `$ARGUMENTS`.
 
-2. Run the summary command:
-   ```bash
-   python3 PLUGIN_DIR/scripts/jules_cli.py activities summary SESSION_ID
-   ```
-   Replace `PLUGIN_DIR` with the actual path to this plugin's directory.
+2. Locate the Jules CLI script at `scripts/jules_cli.py` relative to this plugin's root directory (the directory containing `.claude-plugin/plugin.json`). Use the absolute resolved path.
 
-3. Present the summary clearly:
+3. Run the summary command:
+   ```bash
+   python3 /path/to/jules-api/scripts/jules_cli.py activities summary SESSION_ID
+   ```
+
+4. Present the summary clearly:
    - **State** with emoji indicator
    - **Title**
    - **PR URL** (if available, as clickable link)
@@ -26,7 +27,7 @@ Get a compact summary of a Jules coding session including state, progress, chang
    - **Changed Files** (file list)
    - **Failure Reason** (if failed)
 
-4. If the session is `AWAITING_USER_FEEDBACK`, show the last agent message prominently and suggest responding with `/jules-api:jules-send`.
+5. If the session is `AWAITING_USER_FEEDBACK`, show the last agent message prominently and suggest responding with `/jules-api:jules-send`.
 
 ## Requirements
 
