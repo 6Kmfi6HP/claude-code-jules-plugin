@@ -1,0 +1,48 @@
+name: Validate Plugins
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Validate marketplace.json
+        run: |
+          echo "Checking marketplace.json..."
+          python3 -c "
+          import json, sys
+          with open('.claude-plugin/marketplace.json') as f:
+              data = json.load(f)
+          assert 'name' in data, 'Missing name'
+          assert 'plugins' in data, 'Missing plugins'
+          for p in data['plugins']:
+              assert 'name' in p, f'Plugin missing name'
+              assert 'source' in p, f'Plugin {p[\"name\"]} missing source'
+          print(f'✅ Marketplace valid: {len(data[\"plugins\"])} plugin(s)')
+          "
+
+      - name: Validate plugin.json files
+        run: |
+          for plugin_json in plugins/*/.claude-plugin/plugin.json; do
+            echo "Checking $plugin_json..."
+            python3 -c "
+          import json, sys
+          with open('$plugin_json') as f:
+              data = json.load(f)
+          required = ['name', 'version', 'description']
+          for field in required:
+              assert field in data, f'Missing {field} in $plugin_json'
+          print(f'✅ {data[\"name\"]} v{data[\"version\"]}')
+          "
+          done
+
+      - name: Validate Python CLI
+        run: |
+          python3 plugins/jules-api/scripts/jules_cli.py --help
+          echo "✅ CLI loads successfully"

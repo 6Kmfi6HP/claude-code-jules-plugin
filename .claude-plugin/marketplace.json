@@ -1,0 +1,25 @@
+{
+  "name": "jules-plugin-marketplace",
+  "owner": {
+    "name": "6Kmfi6HP",
+    "email": "6Kmfi6HP@users.noreply.github.com"
+  },
+  "metadata": {
+    "description": "Claude Code plugin for Google Jules — autonomous AI coding agent API integration",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "jules-api",
+      "description": "Manage Google Jules autonomous coding sessions via REST API — create tasks, monitor progress, review PRs, and automate workflows",
+      "version": "1.0.0",
+      "author": {
+        "name": "6Kmfi6HP"
+      },
+      "source": "./plugins/jules-api",
+      "category": "developer-tools",
+      "tags": ["jules", "google", "coding-agent", "automation", "github", "ci-cd"],
+      "keywords": ["jules", "google-jules", "coding-agent", "autonomous", "github-pr"]
+    }
+  ]
+}

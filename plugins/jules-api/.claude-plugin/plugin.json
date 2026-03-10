@@ -1,0 +1,13 @@
+{
+  "name": "jules-api",
+  "version": "1.0.0",
+  "description": "Manage Google Jules autonomous coding sessions — create tasks, monitor progress, send messages, and automate PR workflows via the Jules REST API v1alpha",
+  "author": {
+    "name": "6Kmfi6HP",
+    "url": "https://github.com/6Kmfi6HP"
+  },
+  "homepage": "https://github.com/6Kmfi6HP/claude-code-jules-plugin",
+  "repository": "https://github.com/6Kmfi6HP/claude-code-jules-plugin",
+  "license": "MIT",
+  "keywords": ["jules", "google-jules", "coding-agent", "autonomous", "github-pr", "automation"]
+}
